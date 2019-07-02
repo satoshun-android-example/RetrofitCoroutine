@@ -45,6 +45,7 @@ dependencies {
 
   implementation VIEWMODEL
   implementation LIVEDATA
+  implementation LIVEDATA_RUNTIME
 
   implementation GLIDE
 

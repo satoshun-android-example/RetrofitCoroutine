@@ -3,6 +3,7 @@ package com.github.satoshun.example
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.github.satoshun.example.databinding.MainActBinding
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.SerialName
@@ -19,6 +20,15 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = DataBindingUtil.setContentView(this, R.layout.main_act)
+
+    lifecycleScope.launchWhenCreated {
+      val service = getDogService()
+      val result = runCatching { service.getDog() }
+      binding.title.text = "error"
+      result.getOrNull()?.let {
+        binding.title.text = it.url
+      }
+    }
   }
 }
 

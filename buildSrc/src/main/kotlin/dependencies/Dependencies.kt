@@ -47,6 +47,7 @@ const val ROOM_COMPILER = "androidx.room:room-compiler:$VROOM"
 
 const val VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha01"
 const val LIVEDATA = "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha01"
+const val LIVEDATA_RUNTIME = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha01"
 const val LIFECYCLE_COMPILER = "androidx.lifecycle:lifecycle-compiler:2.0.0"
 const val LIFECYCLE_EXTENSIONS = "androidx.lifecycle:lifecycle-extensions:2.1.0-alpha03"
 
