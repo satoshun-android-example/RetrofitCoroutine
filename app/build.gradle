@@ -1,0 +1,58 @@
+import static dependencies.DependenciesKt.*
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion COMPILE_SDK
+
+  defaultConfig {
+    applicationId "com.github.satoshun.example"
+    minSdkVersion MIN_SDK
+    targetSdkVersion TARGET_SDK
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+  packagingOptions {
+    exclude "META-INF/*"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  dataBinding {
+    enabled = true
+  }
+}
+
+dependencies {
+  implementation KOTLIN
+
+  implementation MATERIAL
+  implementation APPCOMPAT
+  implementation CONSTRAINTLAYOUT
+  implementation KTX
+
+  implementation ACTIVITYX
+  implementation FRAGMENTX
+
+  implementation VIEWMODEL
+  implementation LIVEDATA
+
+  implementation GLIDE
+
+  implementation RETROFIT
+
+  implementation COROUTINE
+
+  testImplementation JUNIT
+
+  androidTestImplementation TEST_RUNNER
+  androidTestImplementation ESPRESSO
+}
