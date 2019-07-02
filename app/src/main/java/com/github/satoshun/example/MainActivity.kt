@@ -10,6 +10,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.create
 import retrofit2.http.GET
@@ -28,6 +29,12 @@ class MainActivity : AppCompatActivity() {
       result.getOrNull()?.let {
         binding.title.text = it.url
       }
+
+      val result2 = runCatching { service.getDogResponse() }
+      binding.title2.text = "error"
+      result2.getOrNull()?.let {
+        binding.title2.text = it.body().toString()
+      }
     }
   }
 }
@@ -35,6 +42,9 @@ class MainActivity : AppCompatActivity() {
 interface DogService {
   @GET("breeds/image/random")
   suspend fun getDog(): Dog
+
+  @GET("breeds/image/random")
+  suspend fun getDogResponse(): Response<Dog>
 }
 
 @Serializable
